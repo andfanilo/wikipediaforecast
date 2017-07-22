@@ -1,7 +1,19 @@
-wikipediaForecast
+Web Traffic Time Series Forecasting
 ==============================
 
-Code for "Web Traffic Time Series Forecasting" kaggle competition
+Code for "Web Traffic Time Series Forecasting" kaggle competition.
+
+# Prerequisites
+
+* [Anaconda](https://www.continuum.io/anaconda-overview)
+
+# Build
+
+ conda create -n wikipediaforecast
+ activate wikipediaforecast
+ conda install --file requirements.txt
+
+# Run
 
 Project Organization
 ------------
