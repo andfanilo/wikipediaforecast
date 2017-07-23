@@ -11,7 +11,7 @@ dependencies:
 # - decorator
 # - dill
 - flake8
-# - h5py
+- h5py
 # - hyperopt
 # - jsonschema
 - jupyter
@@ -27,6 +27,7 @@ dependencies:
 - patsy
 # - pexpect
 # - pickleshare
+- pytables
 - python-dateutil
 - pytz
 - scikit-learn
