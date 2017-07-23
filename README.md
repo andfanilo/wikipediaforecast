@@ -9,9 +9,14 @@ Code for "Web Traffic Time Series Forecasting" kaggle competition.
 
 # Build
 
- conda create -n wikipediaforecast
- activate wikipediaforecast
- conda install --file requirements.txt
+All commands are done on Windows.
+
+Create Conda environment : `conda env create -f environment.yml`
+
+Activate environment : `activate wikipediaForecast`
+
+Update Conda environment : `conda env update -f environment.yml`
+
 
 # Run
 

@@ -1,0 +1,44 @@
+name: wikipediaForecast
+channels:
+- conda-forge
+- anaconda-fusion
+- defaults
+dependencies:
+- python=3.5
+- click
+# - cycler
+- coverage
+# - decorator
+# - dill
+- flake8
+# - h5py
+# - hyperopt
+# - jsonschema
+- jupyter
+# - keras
+# - mock
+- nbconvert
+# - networkx
+# - nose
+- numpy
+- pandas
+# - pandas-profiling
+# - path.py
+- patsy
+# - pexpect
+# - pickleshare
+- python-dateutil
+- pytz
+- scikit-learn
+- scipy
+- seaborn
+- Sphinx
+- statsmodels
+# - traitlets
+# - tensorflow
+- tqdm
+# - xgboost
+- pip:
+#  - fbprophet
+  - missingno
+
