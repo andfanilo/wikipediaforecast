@@ -1,5 +1,6 @@
 name: wikipediaForecast
 channels:
+- r
 - conda-forge
 - anaconda-fusion
 - defaults
@@ -30,6 +31,10 @@ dependencies:
 - pytables
 - python-dateutil
 - pytz
+- r-bit64
+- r-essentials
+- r-forecast
+- r-xgboost
 - scikit-learn
 - scipy
 - seaborn
