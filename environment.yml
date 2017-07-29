@@ -24,7 +24,7 @@ dependencies:
 - numpy
 - pandas
 # - pandas-profiling
-# - path.py
+- path.py
 - patsy
 # - pexpect
 # - pickleshare

@@ -7,7 +7,7 @@ Code for "Web Traffic Time Series Forecasting" kaggle competition.
 
 * [Anaconda](https://www.continuum.io/anaconda-overview)
 
-# Build
+# Build environment
 
 All commands are done on Windows.
 
@@ -17,8 +17,12 @@ Activate environment : `activate wikipediaForecast`
 
 Update Conda environment : `conda env update -f environment.yml`
 
+# Run commands
 
-# Run
+[Download the data from Kaggle](https://www.kaggle.com/c/web-traffic-time-series-forecasting/data). Put it in the `data/raw/` folder.
+
+To process the data, from the root of the project launch `python src/data/make_dataset.py data/raw/ data/processed/` inside your Conda environment. 
+The output should be an `data/processed/df.csv` file suitable for analysis from inside our notebooks and scripts.
 
 Project Organization
 ------------

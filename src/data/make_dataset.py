@@ -2,18 +2,55 @@
 import os
 import click
 import logging
-from dotenv import find_dotenv, load_dotenv
+from path import Path
+import pandas as pd
 
 
 @click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
+@click.argument('input_dir', type=click.Path(exists=True))
+@click.argument('output_dir', type=click.Path(exists=True))
+def main(input_dir, output_dir):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+
+    raw_path = Path(input_dir) / 'train_1.csv.zip'
+    key_path = Path(input_dir) / 'key_1.csv.zip'
+
+    if not raw_path.isfile():
+        raise FileNotFoundError("train_1.csv.zip doesn't exist in {}".format(input_dir))
+    if not (Path(input_dir) / 'key_1.csv.zip').isfile():
+        raise FileNotFoundError("key_1.csv.zip doesn't exist in {}".format(input_dir))
+
+    logger.info("Read raw file {}".format(raw_path))
+    raw = pd.read_csv(raw_path, compression='zip', encoding='iso-8859-1')
+    logger.info("Read key file {}".format(key_path))
+    keys = pd.read_csv(key_path, compression='zip', encoding='iso-8859-1')
+
+    logger.info('Joining files')
+    join = raw.join(keys, lsuffix='_raw', rsuffix='_keys')
+
+    logger.info('Parsing page names in raw file')
+    page_details = pd.DataFrame(raw['Page'].apply(parsePage))
+    page_details.columns = ["agent", "access", "project", "pagename"]
+
+    logger.info('Create final dataset')
+    df = pd.concat([join, page_details], axis=1)
+
+    output_path = Path(output_dir) / 'df.csv'
+    logger.info('Writing to {}'.format(output_path))
+    df.to_csv(output_path, encoding='utf-8', index=False)
+
+
+def parsePage(page):
+    input = str(page).split('_')
+    output = []
+    output.append(input.pop())
+    output.append(input.pop())
+    output.append(input.pop())
+    output.append('_'.join(input))
+    return pd.Series(output)
 
 
 if __name__ == '__main__':
@@ -22,9 +59,5 @@ if __name__ == '__main__':
 
     # not used in this stub but often useful for finding various files
     project_dir = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir)
-
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
 
     main()
