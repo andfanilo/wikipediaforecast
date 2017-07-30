@@ -21,6 +21,8 @@ Update Conda environment : `conda env update -f environment.yml`
 
 Launch Jupyter notebook : `jupyter notebook`
 
+Destroy environment : `conda remove -n wikipediaForecast --all`
+
 ## PyCharm for editing src files
 
 Open root project in Pycharm. 
