@@ -36,7 +36,7 @@ def main(input_dir, output_dir):
 
     output_path = Path(output_dir) / 'df.csv'
     logger.info('Writing to {}'.format(output_path))
-    df.to_csv(output_path, encoding='utf-8', index=False)
+    df.to_csv(output_path, encoding='iso-8859-1', index=False)
 
 
 def parsePage(page):

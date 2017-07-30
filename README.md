@@ -9,13 +9,26 @@ Code for "Web Traffic Time Series Forecasting" kaggle competition.
 
 # Build environment
 
-All commands are done on Windows.
+## Conda environment
+
+All commands are done in a Windows Command line.
 
 Create Conda environment : `conda env create -f environment.yml`
 
 Activate environment : `activate wikipediaForecast`
 
 Update Conda environment : `conda env update -f environment.yml`
+
+Launch Jupyter notebook : `jupyter notebook`
+
+## PyCharm for editing src files
+
+Open root project in Pycharm. 
+
+Go into `File > Settings > Project > Project Interpreter > Add local` and then select `python.exe` in your wikipediaForecast conda environment.
+
+You can then launch the python scripts in `src/` by right-clicking + green arrow. 
+Do take note that some may necessitate further configuration (ex : Script parameters `../../data/raw/  ../../data/processed/` for `make_dataset.py`)
 
 # Run commands
 
